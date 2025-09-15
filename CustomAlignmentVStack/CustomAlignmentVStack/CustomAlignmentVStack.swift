@@ -32,7 +32,7 @@ public struct CustomAlignmentVStack: Layout {
         for (viewSize, view) in zip(sizes, subviews) {
             
             // get which alignment this should be in
-            let elementAlignment = view[PreferredAlignment.self] ?? self.alignment
+            let elementAlignment = view[PreferredHAlignment.self] ?? self.alignment
             
             let xAxisOffset: CGFloat = {
                 switch elementAlignment {
@@ -55,12 +55,12 @@ public struct CustomAlignmentVStack: Layout {
     }
 }
 
-nonisolated struct PreferredAlignment: LayoutValueKey {
+nonisolated struct PreferredHAlignment: LayoutValueKey {
     static let defaultValue: HorizontalAlignment? = nil
 }
 
 extension View {
-    public func preferredAlignment(_ alignment: HorizontalAlignment?) -> some View {
-        layoutValue(key: PreferredAlignment.self, value: alignment)
+    public func preferredHAlignment(_ alignment: HorizontalAlignment?) -> some View {
+        layoutValue(key: PreferredHAlignment.self, value: alignment)
     }
 }
